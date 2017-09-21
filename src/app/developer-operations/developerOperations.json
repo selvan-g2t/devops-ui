@@ -1,0 +1,26 @@
+{
+    "pagingInfo":null,
+    "searchResults":[
+        {
+            "name":"The Developer Operation Name",
+            "description":"Represents a ...",
+            "statusName":"Active",
+            "id":"87d719bc-da9f-4fbc-a7f0-3e2f2347fee7",
+            "rfqNumber":"X1098765432"
+        },
+        {
+            "name":"Another Developer Operation",
+            "description":"Represents a ....",
+            "statusName":"Active",
+            "id":"811c12aa-89ef-4254-827e-0b0dab42f947",
+            "rfqNumber":"X1098765433"
+        },
+        {
+            "name":"A Third Developer Operation",
+            "description":"Represents a ...",
+            "statusName":"Active",
+            "id":"6bc65678-e9d2-4d44-9fe6-846946c1fb13",
+            "rfqNumber":"X100047621"
+        }
+    ]
+}

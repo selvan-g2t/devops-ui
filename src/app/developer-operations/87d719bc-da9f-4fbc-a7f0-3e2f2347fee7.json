@@ -1,0 +1,11 @@
+{
+    "name":"The Developer Operation Name",
+    "description":"Represents an a clients quote request.",
+    "statusName":"Active",
+    "id":"87d719bc-da9f-4fbc-a7f0-3e2f2347fee7",
+    "rfqNumber":"X1098765432",
+    "rfqType":[{"id":"rfqType1","text":"RFQ Type 1"}],
+    "dueDate":"Jan 05 2017",
+    "currency":[{"id":"USD","text":"USD"}],
+    "dropzones":[{"id":0,"text":"Technical"},{"id":1,"text":"Financial"}]
+}

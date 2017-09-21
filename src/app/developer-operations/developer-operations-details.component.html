@@ -1,0 +1,40 @@
+
+<div class="row"  *ngIf="developerOperation" >
+  <div class="col-md-12">
+    <!-- <nav-item navproperty="navigationProperty"></nav-item> -->
+    <h2 class="adminTitle"> {{ developerOperation.name }} </h2>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="javascript:void(0);#details" data-toggle="tab">Details</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="details">
+          <form class="form-horizontal" name="developerOperationForm">
+              <div class="st_button_bar">
+                  <button class="btn btn-default dropdown-toggle displayMode" type="button" (click)="modify()" >Modify</button>
+                  <button class="btn btn-danger dropdown-toggle displayMode" type="button" (click)="confirmModal()">Delete</button>
+      
+                  <button class="btn btn-primary dropdown-toggle editMode" type="button" (click)="save()" >Save</button>
+                  <button class="btn btn-default dropdown-toggle editMode" type="button" (click)="cancel()" >Cancel</button>
+      
+                  <span class="pull-right editMode">
+                    <span class="small text-muted"><span class="requiredField">* </span>required</span>
+                    &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <span class="small text-muted"><span class="uniqueField">† </span>unique</span>
+                  </span>
+              </div>
+              
+              <div class="form-group h26">
+                  <label for="name" class="col-md-3 control-label"><span class="requiredField editMode">* </span>Name</label>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control editMode" id="name" ng-required="true" ng-model="developerOperationDetails_name" name="name">
+                    <span class="displayMode">{{developerOperationDetails_name}}</span>
+                  </div>
+                </div>
+
+
+            </form>
+          </div>
+    </div><!-- /tab-content -->
+  </div>
+</div><!-- /row -->

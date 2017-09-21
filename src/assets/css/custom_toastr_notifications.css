@@ -1,0 +1,32 @@
+
+.ui-notification
+{
+    position: fixed;
+    z-index: 9999;
+
+    width: 300px;
+
+    cursor: pointer;
+    -webkit-transition: all ease .5s;
+         -o-transition: all ease .5s;
+            transition: all ease .5s;
+
+    color: #333;
+    border-radius: 0px;
+    border:1px solid #b1b1b1;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,.2);
+}
+
+.ui-notification > .message
+{
+    margin: 0px !important;
+}
+.ui-notification.error,
+.ui-notification.info,
+.ui-notification.warning,
+.ui-notification.success
+{
+    color: #333;
+    background: #fff;
+}

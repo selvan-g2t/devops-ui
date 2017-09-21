@@ -1,0 +1,99 @@
+
+.sel-file {
+    font-size: smaller;
+    color: grey;
+    width:135px;
+    display:inline-block;
+    margin:0px 15px 15px 0px;
+    border:1px solid #dedede;
+    border-radius:3px;
+    padding:4px;
+    background-color:#fff;
+    position:relative;
+}
+.sel-file img {border:1px solid #444;opacity:.5;}
+.sel-file img.non-image {border:0px solid #fff; opacity:.2;}
+
+.response {
+    padding: 0;
+    padding-top: 10px;
+    margin: 10px;
+    clear:both;
+}
+#listViewMode {
+    padding: 0;
+    padding-top: 10px;
+    clear:both;
+}
+
+
+.list-progress {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #315496;
+    margin: 5px 0px;
+    padding:none;
+    height:auto;
+}
+
+.progress {
+    display: inline-block;
+    width: 125px;
+    border: 1px solid #315496;
+    margin: 5px 0px;
+    padding:none;
+    height:auto;
+}
+
+.list-progress div, .progress div {
+    font-size: smaller;
+    color:#fff;
+    background: #68B5F1;
+    width: 0;
+    text-indent:5px;
+}
+
+.drop-box {
+    background: #F8F8F8;
+    border: 2px dashed #DDD;
+    text-align: left;
+    padding: 10px;
+    min-height:60px;
+    border-radius:4px;
+}
+
+.drop-box.dragover {
+    border: 2px dashed #6B9631;
+}
+
+.drop-box.dragover-err {
+    border: 2px dashed red;
+}
+
+.thumb {
+    float: left;
+    width: 90px;
+    margin-right: 10px;
+}
+.list-thumb {
+    height: 21px;
+    margin-right: 10px;
+}
+.doc {
+    float: left;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.previewBtn, .abortBtn {
+    padding:2px 6px;
+    display:inline-block;
+    border:1px solid #ddd;
+    border-radius:0px;
+    text-align:center;
+    font-weight:600;
+    float:right;
+    margin:0px;
+    background-color:#f7f7f7;
+}
+

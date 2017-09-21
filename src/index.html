@@ -1,0 +1,35 @@
+<!doctype html>
+<html class="layout-pf layout-pf-fixed transitions">
+<head>
+  <meta charset="utf-8">
+  <title>Manage Orders</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="assets/img/TruTesta/favicon.png?v1">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" media="screen, print">
+  <script src="https://cdn.ckeditor.com/4.5.11/full/ckeditor.js"></script>
+  <script src="http://cdn.ckeditor.com/4.5.11/full-all/plugins/divarea/plugin.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.js"></script>
+  <style>
+    /* Hide Angular JS elements before initializing */
+    .splash {
+      display: none;
+    }
+    [ng-cloak].splash {
+      text-align: center;
+      display: block !important;
+      margin:100px auto; width:500px; min-height:150px;border:0px solid #ccc;padding:40px;
+    }
+  </style>
+</head>
+<body>
+  <app-root>
+    <div class="splash" ng-cloak="">
+      <i class="fa fa-refresh fa-spin" aria-hidden="true" style="font-size:48px;"></i><br/><br/><br/>
+      <h4 class="text-muted"><b>Patience...</b> we're loading a bunch of code, but not to worry we'll cache everything
+        for next time.</h4>
+    </div>
+  </app-root>
+</body>
+</html>
