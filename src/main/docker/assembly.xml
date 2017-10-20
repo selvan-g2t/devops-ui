@@ -1,0 +1,14 @@
+<assembly>
+<fileSets>
+   <fileSet>
+       <includes>
+          <include>app/**</include>
+          <include>components/**</include>
+          <include>dist/**</include>
+          <include>bower.json</include>
+          <include>index.html</include>
+          <include>package.json</include>
+       </includes>
+   </fileSet>
+</fileSets>
+</assembly>
