@@ -173,7 +173,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #secondRow h4 a span {background-color: transparent;}
 #mainColumn label, #rightColumn label  {color:#454545;}
 #listTable .list-group-item:first-child {
-    
+    border-top:none;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
 }
@@ -181,7 +181,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
-
+#listTable .list-group-item {border-right:0px;border-left:0px;}
 #mainColumn .form-horizontal .form-group {
     margin-right: 0px;
     margin-left: 0px;

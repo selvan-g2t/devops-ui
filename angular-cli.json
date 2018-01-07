@@ -1,0 +1,89 @@
+{
+  "project": {
+    "version": "1.0.0-beta.30",
+    "name": "st-sprig-document-admin-ui"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+        "assets",
+        "favicon.ico"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "app",
+      "styles": [
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "../node_modules/patternfly/dist/css/patternfly.css",
+        "../node_modules/patternfly/dist/css/patternfly-additions.css",
+        "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
+        "../node_modules/angular2-busy/build/style/busy.css",
+        "../node_modules/select2/dist/css/select2.min.css",
+        "../node_modules/ngx-chips/dist/modules/core/styles/core/_core.scss",
+        "assets/fonts/font-awesome/css/font-awesome.css",
+        "assets/fonts/IcoMoon/icoMoon.css",
+        "assets/css/awesome-bootstrap-checkbox.css",
+        "assets/css/custom-vertical-nav.css",
+        "assets/css/defaultLayout.css",
+        "assets/css/common.css",
+        "assets/css/upload.css",
+        "styles.css"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/patternfly/dist/js/patternfly.js",
+        "../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+        "../node_modules/bootstrap-timepicker/js/bootstrap-timepicker.min.js",
+        "../node_modules/select2/dist/js/select2.full.js",
+        "scripts.js"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "files": "src/**/*.ts",
+      "project": "src/tsconfig.json"
+    },
+    {
+      "files": "e2e/**/*.ts",
+      "project": "e2e/tsconfig.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "prefixInterfaces": false,
+    "inline": {
+      "style": false,
+      "template": false
+    },
+    "spec": {
+      "class": false,
+      "component": true,
+      "directive": true,
+      "module": false,
+      "pipe": true,
+      "service": true
+    }
+  }
+}

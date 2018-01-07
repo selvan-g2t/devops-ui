@@ -1,0 +1,10 @@
+{
+    "name":"The External System Name",
+    "description":"Represents a External System.",
+    "statusName":"Active",
+    "id":"87d719bc-da9f-4fbc-a7f0-3e2f2347fee7",
+    "businessCode":"C1098765432",
+    "dateCreated":"06/30/2017",
+    "homepageURL":"http://localhost:9000",
+    "healthcheckURL":"http://localhost:4200"
+}

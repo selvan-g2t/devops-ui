@@ -1,0 +1,18 @@
+{
+    "name":"The Kubernetes Instance Name",
+    "description":"Represents a Kubernetes Instance.",
+    "statusName":"Active",
+    "id":"87d719bc-da9f-4fbc-a7f0-3e2f2347fee7",
+    "businessCode":"C1098765432",
+    "dateCreated":"06/30/2017",
+    "credentials":{
+        "realm": "Intertek",
+        "auth-server-url": "https://tenants.intigna.io/auth",
+        "url": "https://tenants.intigna.io/auth",
+        "ssl-required": "external",
+        "resource": "trutesta",
+        "clientId":"trutesta",
+        "public-client": true,
+        "confidential-port": 0
+    }
+}

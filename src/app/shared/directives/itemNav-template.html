@@ -1,0 +1,27 @@
+<div style="margin-right:-10px;">
+    <span class="list-pager pull-right">
+        <ul class="pager">
+            <li class="expand" [class.disabled]="disableNav">
+                <a href="javascript:void(0)" (click)="expand()" class="expand-control ">
+                    <span class="i fa icon icon-enlarge2"></span>
+                    <span class="i fa icon icon-shrink2" style="display:none"></span>
+                </a>
+            </li>
+        </ul>
+    </span>
+    <span class="list-pager pull-right" >
+        <ul class="pager" [class.disabled]="disableNav">
+            <li class="previous" [class.disabled]="disableLeft">
+                <a href="javascript:void(0)" (click)="!disableLeft && previous()" [class.disabled]="disableLeft">
+                    <span class="i fa icon icon-backward2" style="background:transparent"></span>
+                </a>
+            </li>
+            <li class="next" [class.disabled]="disableRight">
+                <a href="javascript:void(0)" (click)="!disableRight && next()" [class.disabled]="disableRight">
+                    <span class="i fa icon icon-forward3" style="background:transparent"></span>
+                </a>
+            </li>
+        </ul>
+    </span>
+</div>
+

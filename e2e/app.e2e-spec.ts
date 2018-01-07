@@ -1,10 +1,10 @@
-import { StRequestQuoteUiPage } from './app.po';
+import { IntkTicpMngProjPage } from './app.po';
 
-describe('st-request-quote-ui App', () => {
-  let page: StRequestQuoteUiPage;
+describe('intk-ticp-mng-proj App', function() {
+  let page: IntkTicpMngProjPage;
 
   beforeEach(() => {
-    page = new StRequestQuoteUiPage();
+    page = new IntkTicpMngProjPage();
   });
 
   it('should display message saying app works', () => {

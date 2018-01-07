@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class StRequestQuoteUiPage {
+export class IntkTicpMngProjPage {
   navigateTo() {
     return browser.get('/');
   }

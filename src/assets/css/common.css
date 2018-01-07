@@ -42,7 +42,7 @@ a.adisabled {
 
 
 .requiredField {color:red;}
-.unique {color:#508cbc;}
+.unique {color:#39a5dc;}
 
 .panel-primary {
     border-color: #0963A7;
@@ -70,7 +70,7 @@ a.adisabled {
 
 .itemSelected .list-name {color:#FFF;font-size:115%;}
 .itemSelected .list-name .icon {opacity:.8;}
-.itemSelected .list-description {color:#444;font-size:94%;}
+.itemSelected .list-description {color:#BBB;font-size:94%;}
 
 .itemSelected .list-number {color:#BBB;}
 .itemSelected .list-dates span {color:#999;font-size:90%;}
@@ -218,4 +218,3 @@ a.adisabled {
     color: #00ce10 !important;
 }
 
-.displayText {display:block}

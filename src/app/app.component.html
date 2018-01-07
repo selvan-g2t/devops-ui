@@ -1,36 +1,62 @@
 <nav class="navbar navbar-pf-vertical">
   <div class="navbar-header">
-    <button type="button" class="navbar-toggle">
-     <span class="sr-only">Toggle Navigation</span>
-     <span class="icon-bar"></span>
-     <span class="icon-bar"></span>
-     <span class="icon-bar"></span>
-   </button>
+      <button type="button" class="navbar-toggle">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </button>
     <div style="display:inline-block;">
-        <img class="navbar-brand-icon" src="assets/img/TruTesta/trutesta_logo.png" alt="" style="margin:11px 10px;" height="32" />
+      <img class="navbar-brand-icon" src="assets/img/TruTesta/trutesta_logo.png" alt="" style="margin-top:-10px;display:inline-block;"  height="32"/>
+      <h1 style="display:inline-block;margin:15px 0 0 20px;color:#999"> Service Registry</h1>
     </div>
-</div>
+  </div>
   <nav class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right navbar-iconic">
-
-      
-
         <li class="dropdown dropdown-kebab-pf" id="userPreferences">
           <a class="dropdown-toggle nav-item-iconic" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span title="Username" class="fa fa-user"></span>
-            <span class="fa userName">SemaTree Admin</span>
-            <span class="caret"></span>
+             <div class="people_avatar-container">
+                <span class="people_avatar"><img gravatar [email]="'Acme Shovel Company'" [size]="17" [fallback]="'blank'" /></span>
+                <div class="people_fallbackInitial">{{'Sematree Admin' | limitTo:1}}</div>
+              </div>
+              <span class="fa userName">Sematree Admin</span>
+              <span class="caret"></span>
           </a>
           <ul class="dropdown-menu" style="left:auto !important;right:-10px;" aria-labelledby="dropdownMenu2">
-            <li><a href="javascript:void(0)">LogOut</a></li>
+              <li><a href="javascript:void(0)">LogOut</a></li>
           </ul>
         </li>
     </ul>
   </nav>
 </nav>
+<div class="nav-pf-vertical hidden-icons-pf">
+  <ul class="list-group" style="border-top:1px solid #efefef">
 
-<div id="adminView" class="container-fluid">
+    <li class="list-group-item" routerLinkActive="active" >
+      <a routerLink="url-types">
+        <span class="list-group-item-value">{{'administration_urlTypes_label' | translate}}</span>
+      </a>
+    </li>
+    <li class="list-group-item" routerLinkActive="active" >
+      <a routerLink="external-systems">
+        <span class="list-group-item-value">{{'administration_externalSystems_label' | translate}}</span>
+      </a>
+    </li>
+    <li class="list-group-item" routerLinkActive="active" >
+      <a routerLink="kubernetes-instances">
+        <span class="list-group-item-value">{{'administration_kubernetesInstances_label' | translate}}</span>
+      </a>
+    </li>
+    <li class="list-group-item" routerLinkActive="active" >
+      <a routerLink="service-definitions">
+        <span class="list-group-item-value">{{'administration_serviceDefinitions_label' | translate}}</span>
+      </a>
+    </li>
+
+
+  </ul>
+</div>
+<div id="adminView" class="container-fluid container-pf-nav-pf-vertical hidden-icons-pf">
   <div id="ui-view">
   	<router-outlet></router-outlet></div>
 </div>
-

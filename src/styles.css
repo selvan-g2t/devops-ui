@@ -1,3 +1,5 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/dhtmlxSuite_v51_pro/skins/material/dhtmlx.css";
 
 body {overflow:hidden;}
 
@@ -53,6 +55,11 @@ body {overflow:hidden;}
     right: 20px;
     top: 0;
 }
+
+.nav-pf-vertical>.list-group>.list-group-item.active>a:before {
+    background: #729bbc;
+}
+
 .navbar-pf-vertical .navbar-toggle .icon-bar {
     background: #777;
 }
@@ -218,7 +225,7 @@ nav .dropdown-kebab-pf .dropdown-menu:after, nav .dropdown-kebab-pf .dropdown-me
 .actionIcons {font-size:110%;color:#999;white-space:nowrap;}
 .actionIcons span {cursor:pointer;}
 .actionIcons span:first-child {margin-right:8px;}
-.actionIcons span:hover {color:#508cbc !important;}
+.actionIcons span:hover {color:#39a5dc !important;}
 
 .actionIcons span.pficon-delete:hover {color:firebrick !important;}
 caption .actionIcons span {margin-right:8px;}
@@ -379,19 +386,15 @@ a.list-group-item.itemSelected .subHeading {color:#ddd;}
 }
 #refreshListContainer span {margin-right:10px;}
 
-a.list-group-item.itemSelected>div>img {filter: invert(73%);}
-a.list-group-item.itemSelected:hover>div>img {filter: invert(73%);}
-a.list-group-item:hover>div>img {filter: invert(7%);}
-
 
       .user_avatar-container {position:relative;width:31px;height:31px;float:left;margin:0 5px;margin-top:-10px;}
       .user_avatar {position:absolute;top:0;left:0;z-index:2;display:inline-block;width:31px; height:31px; border:1px solid #fff; border-radius:15px;overflow:hidden}
-      .user_fallbackInitial {position:absolute;top:0;left:0;z-index:1;background-color:#729bbc;display:inline-block;width:31px; height:31px; border:1px solid #fff; border-radius:15px;color:#fff;font-weight:600;text-align:center;line-height:31px;text-transform:uppercase}
+      .user_fallbackInitial {position:absolute;top:0;left:0;z-index:1;background-color:#21b6d7;display:inline-block;width:31px; height:31px; border:1px solid #fff; border-radius:15px;color:#fff;font-weight:600;text-align:center;line-height:31px;text-transform:uppercase}
 
 
       .people_avatar-container {position:relative;width:21px;height:21px;float:left;margin:0 5px;}
       .people_avatar {position:absolute;top:0;left:0;z-index:2;display:inline-block;width:21px; height:21px; border:1px solid #fff; border-radius:10px;overflow:hidden}
-      .people_fallbackInitial {position:absolute;top:0;left:0;z-index:1;background-color:#729bbc;display:inline-block;width:21px; height:21px; border:1px solid #fff; border-radius:10px;color:#fff;font-weight:600;text-align:center;line-height:19px;text-transform:uppercase;font-size:76%}
+      .people_fallbackInitial {position:absolute;top:0;left:0;z-index:1;background-color:#21b6d7;display:inline-block;width:21px; height:21px; border:1px solid #fff; border-radius:10px;color:#fff;font-weight:600;text-align:center;line-height:21px;text-transform:uppercase;font-size:66%}
 
 
 #sub-tabs .nav-tabs>li>a {
@@ -447,14 +450,33 @@ a {
     top:40%;
 
 }
-.nav-pf-vertical .list-group-item.active>a .fa, 
-.nav-pf-vertical .list-group-item.active>a .glyphicon, 
-.nav-pf-vertical .list-group-item.active>a .pficon, 
-.nav-pf-vertical .list-group-item:hover>a .fa, 
-.nav-pf-vertical .list-group-item:hover>a .glyphicon, 
-.nav-pf-vertical .list-group-item:hover>a .pficon {
-    color:#729bbc
+tag {
+    border:1px solid #dedede;
+    line-height: 1.5em !important;
+    height: 26px !important;
+    padding: 3px 8px !important;
 }
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    color:#729bbc
+delete-icon {
+    width: 20px;
+    height: 16px;
+    transition: none !important;
+    display: inline-block;
+    text-align: right;
 }
+.ng2-dropdown-menu {z-index: 9999 !important}
+
+.select2-container--default {width:100% !important}
+
+.dhxtree_material .selectedTreeRowFull .dhxTextCell {
+    background-color: transparent !important;
+}
+.selectedTreeRow {padding:3px 8px !important;border-radius:14px;border:1px solid #dedede;background-color:#f7f7f7}
+
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover {
+    background-color: #4d5258;
+    border-color: #4d5258;
+}
+.dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected div.dhxtreeview_item_label, .dhxtreeview_material div.dhxtreeview_cont div.dhxtreeview_area div.dhxtreeview_item div.dhxtreeview_item_text.dhxtreeview_item_text_selected:hover div.dhxtreeview_item_label {
+    background-color: transparent;
+}
+div.dhxtreeview_item_text.dhxtreeview_item_text_selected div {color:#ffffff !important}

@@ -1,0 +1,146 @@
+<table cellpadding="0" cellspacing="0" border="0" width="100%" id="listTable">
+    <tr>
+        <td id="ml" width="260">
+            <table cellpadding="0" cellspacing="0" border="0" style="table-layout:fixed" class="middle_list">
+                <tr>
+                    <td class="firstChild">
+                        <table id="firstChildButtonTable">
+                            <tr>
+                                <td><button class="btn btn-default" type="button" (click)="kubernetesInstanceOpen()">{{'BTN_add_label' | translate }}</button></td>
+                                <td>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="listFilter">{{'administration_kubernetesInstances_label' | translate }}</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="listFilter" [(ngModel)]="search" placeholder="{{'administration_kubernetesInstances_label' | translate }}">
+                                            <div class="input-group-addon"><span class="fa fa-search" (click)="getKubernetesInstances(page,pSize,search)"></span></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                            aria-expanded="true">
+                                    {{'dashboard_show_label' | translate }}
+                                    <span class="caret"></span>
+                                  </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                <li><a href="javascript:void(0)" (click)="setPage(1,10)">{{'administration_10perPage_label' | translate}}</a></li>
+                                                <li><a href="javascript:void(0)" (click)="setPage(1,25)">{{'administration_25perPage_label' | translate}}</a></li>
+                                                <li><a href="javascript:void(0)" (click)="setPage(1,50)">{{'administration_50perPage_label' | translate}}</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="mid_list" style="overflow:hidden;" [ngBusy]="list_busy">
+                        <div class="mid_list">
+                            <p [class.hidden]="true">
+                                {{'administration_noResults_label' | translate }}
+                            </p>
+
+                            <a class="list-group-item" style="min-height:50px;" *ngFor="let kubernetesInstance of kubernetesInstances" (click)="onSelect(kubernetesInstance)" [class.itemSelected]="isSelected(kubernetesInstance)">
+                                <div>
+                                    <div class="list-name">
+                                        {{ kubernetesInstance.name }}
+                                    </div>
+                                    <div class="list-description">{{kubernetesInstance.description}}</div>
+                                    <div class="list-dates">
+                                        <span class="pull-left">{{kubernetesInstance.dateCreated | date:"MM/dd/yy"}}</span>
+                                        <span class="pull-right">{{kubernetesInstance.statusName}}</span>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="paginationContainer" [hidden]="disablePagination || pager.totalPages==1">
+                        <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                            <!--<li [ngClass]="{disabled:pager.currentPage === 1}">
+                                    <a (click)="setPage(1)">First</a>
+                                </li>-->
+                            <li [ngClass]="{disabled:pager.currentPage === 1}">
+                                <a (click)="setPage(pager.currentPage - 1)">
+                                    <</a>
+                            </li>
+                            <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                <a (click)="setPage(page)">{{page}}</a>
+                            </li>
+                            <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                <a (click)="setPage(pager.currentPage + 1)">></a>
+                            </li>
+                            <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                    <a (click)="setPage(pager.totalPages)">Last</a>
+                                </li>-->
+                        </ul>
+                    </td>
+                    <td id="refreshListContainer">
+                        <a (click)="getKubernetesInstances(1,10)"><span class="pull-right fa fa-refresh"></span></a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td id="mc" style="position:relative">
+            <div class="detailsColumn" [ngBusy]="busy">
+                <router-outlet></router-outlet>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+<!-- Begin Add KubernetesInstance Modal -->
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" [cssClass]="cssClass" #addKubernetesInstanceModal>
+    <form #modalForm="ngForm" class="form-horizontal" role="form">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">{{'administration_add_kubernetesInstance_label' | translate }}</h4>
+        </modal-header>
+        <modal-body  [ngBusy]="modalBusy">
+
+            <div class="form-group" [ngClass]="{'has-error':(error.name)}">
+                <label for="name" class="control-label col-md-3"><sup class="uniqueField text-muted">† </sup><span class="requiredField">* </span>{{ 'administration_name_label' | translate }}</label>
+                <div class="col-md-8">
+                    <input type="text" required class="form-control" [(ngModel)]="kubernetesInstance.name" required name="name" id="name">
+                    <span class="text-danger" *ngIf="error.name">{{error.name.errorMessage}}</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description" class="col-md-3 control-label">{{ 'administration_description_label' | translate }}</label>
+              <div class="col-md-8">
+                <textarea class="form-control" id="description" name="description" [(ngModel)]="kubernetesInstance.description"></textarea>
+              </div>
+            </div>
+  
+            <div class="form-group h26" [ngClass]="{'has-error':(error.businessCode)}">
+              <label for="businessCode" class="col-md-3 control-label"><sup class="uniqueField text-muted">† </sup>{{ 'administration_businessCode_label' | translate }}</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control" id="businessCode" name="businessCode" required [(ngModel)]="kubernetesInstance.businessCode">
+                <span class="text-danger" *ngIf="error.businessCode">{{error.businessCode.errorMessage}}</span>
+              </div>
+            </div>
+            
+
+            <div class="form-group h26">
+                <label class="col-md-3 control-label">{{ 'administration_status_label' | translate }}</label>
+                <div class="col-md-8">
+                    <div class="checkbox checkbox-primary">
+                        <input type="checkbox" id="status" name="status" [(ngModel)]="kubernetesInstance.statusName">
+                        <label for="status">{{ 'administration_active_label' | translate }}</label>                        
+                    </div>
+                    <span class="text-danger" *ngIf="error.statusName">{{error.statusName.errorMessage}}</span>
+                </div>
+            </div>
+
+        </modal-body>
+        <modal-footer>
+            <button type="button" class="btn btn-default" data-dismiss="modal" (click)="addKubernetesInstanceModal.dismiss()">{{'BTN_cancel_label' | translate }}</button>
+            <button type="button" class="btn btn-primary" [disabled]="!modalForm.form.valid" (click)="save()">{{'BTN_save_label' | translate }}</button>
+        </modal-footer>
+    </form>
+</modal>
+<!-- End Add KubernetesInstance Modal -->

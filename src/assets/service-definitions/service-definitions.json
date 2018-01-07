@@ -1,0 +1,29 @@
+{
+    "pagingInfo":null,
+    "searchResults":[
+        {   
+            "name":"The Service Definition Name",
+            "description":"Represents a Service Definition.",
+            "statusName":"Active",
+            "id":"87d719bc-da9f-4fbc-a7f0-3e2f2347fee7",
+            "businessCode":"C1098765432",
+            "dateCreated":"06/30/2017"
+        },
+        {  
+            "name":"Another Service Definition",
+            "description":"Represents a  Service Definition.",
+            "statusName":"Active",
+            "id":"811c12aa-89ef-4254-827e-0b0dab42f947",
+            "businessCode":"C1098765433",
+            "dateCreated":"06/30/2017"
+        },
+        {
+            "name":"A Third Service Definition",
+            "description":"Represents a Service Definition.",
+            "statusName":"Active",
+            "id":"6bc65678-e9d2-4d44-9fe6-846946c1fb13",
+            "businessCode":"C100047621",
+            "dateCreated":"06/30/2017"
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+<div class="row" *ngIf="externalSystem">
+  <div class="col-md-12">
+    <nav-item></nav-item>
+    <h2 class="adminTitle" style="padding-left:20px;"> {{ externalSystem.name }} </h2>
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="javascript:void(0);#details" data-toggle="tab">{{ 'administration_details_tab_label' | translate }}</a></li>
+      <li><a href="javascript:void(0);#healthcheckLogs" data-toggle="tab">{{ 'administration_healthcheckLogs_label' | translate }}</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane fade in active" id="details">
+        <form #modalForm="ngForm" class="form-horizontal" id="externalSystemsForm" name="externalSystemsForm">
+          <div class="st_button_bar">
+
+            <button class="btn btn-default dropdown-toggle displayMode" type="button" (click)="modify()">{{'BTN_modify_label' | translate }}</button>
+            <button class="btn btn-danger dropdown-toggle displayMode" type="button" (click)="externalSystemDeleteModalOpen()">{{'BTN_delete_label' | translate }}</button>
+
+            <button class="btn btn-primary dropdown-toggle editMode" type="button" [disabled]="!modalForm.form.valid" (click)="save()">{{'BTN_save_label' | translate }}</button>
+            <button class="btn btn-default dropdown-toggle editMode" type="button" (click)="cancel()">{{'BTN_cancel_label' | translate }}</button>
+
+            <span class="pull-right editMode">
+              <span class="small text-muted"><span class="requiredField">* </span>{{ 'administration_required_label'
+            | translate }}</span>
+            &nbsp;&nbsp;|&nbsp;&nbsp;
+            <span class="small text-muted"><span class="uniqueField">† </span>{{ 'administration_unique_label' | translate
+            }}</span>
+            </span>
+          </div>
+          <div class="form-group h26 displayMode">
+            <label for="name" class="col-md-3 control-label">{{ 'administration_id_label' | translate }}</label>
+            <div class="col-md-8">
+              {{externalSystem.id}}
+            </div>
+          </div>
+
+          <div class="form-group h26" [ngClass]="{'has-error':(error.name)}">
+            <label for="name" class="col-md-3 control-label"><sup class="uniqueField text-muted editMode">† </sup><span class="requiredField editMode">* </span>{{ 'administration_name_label' | translate }}</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control editMode" id="name" name="name" required [(ngModel)]="externalSystem.name">
+              <span class="displayMode">{{externalSystem.name}}</span>
+              <span class="text-danger" *ngIf="error.name">{{error.name.errorMessage}}</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="col-md-3 control-label">{{ 'administration_description_label' | translate }}</label>
+            <div class="col-md-8">
+              <textarea class="form-control editMode" id="description" name="description" [(ngModel)]="externalSystem.description"></textarea>
+              <span id="description_span" class="displayMode">{{externalSystem.description}}</span>
+            </div>
+          </div>
+
+          <div class="form-group h26" [ngClass]="{'has-error':(error.businessCode)}">
+            <label for="businessCode" class="col-md-3 control-label"><sup class="uniqueField text-muted editMode">† </sup>{{ 'administration_businessCode_label' | translate }}</label>
+            <div class="col-md-8">
+              <input type="text" class="form-control editMode" id="businessCode" name="businessCode" required [(ngModel)]="externalSystem.businessCode">
+              <span class="displayMode">{{externalSystem.businessCode}}</span>
+              <span class="text-danger" *ngIf="error.businessCode">{{error.businessCode.errorMessage}}</span>
+            </div>
+          </div>
+          
+
+          <div class="form-group h26">
+            <label class="col-md-3 control-label">{{ 'administration_status_label' | translate }}</label>
+            <div class="col-md-8">
+              <div class="editMode">
+                <div class="checkbox checkbox-primary">
+                  <input type="checkbox" id="status" name="status" [(ngModel)]="externalSystem.statusName">
+                  <label for="status">{{ 'administration_active_label' | translate }}</label>
+                </div>
+                <span class="text-danger" *ngIf="error.statusName">{{error.statusName.errorMessage}}</span>
+              </div>
+              <span class="displayMode">{{externalSystem.statusName?'Active':'Inactive'}}</span>
+            </div>
+          </div>
+
+
+          <div class="form-group h26">
+              <label for="homepageURL" class="col-md-3 control-label">{{ 'administration_homepageURL_label' | translate }}</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control editMode" id="homepageURL" name="homepageURL" [(ngModel)]="externalSystem.homepageURL">
+                <span class="displayMode">{{externalSystem.homepageURL}}</span>
+              </div>
+            </div>
+
+
+          <div class="form-group h26">
+              <label for="healthcheckURL" class="col-md-3 control-label">{{ 'administration_healthcheckURL_label' | translate }}</label>
+              <div class="col-md-8">
+                <input type="text" class="form-control editMode" id="healthcheckURL" name="healthcheckURL" [(ngModel)]="externalSystem.healthcheckURL">
+                <span class="displayMode">{{externalSystem.healthcheckURL}}</span>
+              </div>
+            </div>
+
+
+
+        </form>
+      </div>
+      <!-- /details tab -->
+
+      <div class="tab-pane fade" id="healthcheckLogs">
+          <form #modalForm="ngForm" class="form-horizontal" id="externalSystemsForm" name="externalSystemsForm">
+            <div class="st_button_bar">
+              <br>
+            </div>
+            <table class="table table-bordered table-stripped">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Log Entry</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>01/01/2018</td>
+                  <td>Lorem ipsum dolor sit amet, eu mei munere utroque suavitate, nam id porro omnesque. Ea elit omnes sea, ne est suavitate efficiantur. At ius affert causae officiis, mea stet saepe cu. Id nam ridens possit gubergren. No soluta albucius consectetuer vix.</td>
+                </tr>
+                <tr>
+                  <td>01/01/2018</td>
+                  <td>Lorem ipsum dolor sit amet, eu mei munere utroque suavitate, nam id porro omnesque. Ea elit omnes sea, ne est suavitate efficiantur. At ius affert causae officiis, mea stet saepe cu. Id nam ridens possit gubergren. No soluta albucius consectetuer vix.</td>
+                </tr>
+                <tr>
+                  <td>01/01/2018</td>
+                  <td>Lorem ipsum dolor sit amet, eu mei munere utroque suavitate, nam id porro omnesque. Ea elit omnes sea, ne est suavitate efficiantur. At ius affert causae officiis, mea stet saepe cu. Id nam ridens possit gubergren. No soluta albucius consectetuer vix.</td>
+                </tr>
+                <tr>
+                  <td>01/01/2018</td>
+                  <td>Lorem ipsum dolor sit amet, eu mei munere utroque suavitate, nam id porro omnesque. Ea elit omnes sea, ne est suavitate efficiantur. At ius affert causae officiis, mea stet saepe cu. Id nam ridens possit gubergren. No soluta albucius consectetuer vix.</td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+      </div>
+
+
+    </div>
+    <!-- /tab-content -->
+
+  </div>
+</div>
+<!-- /row -->
+
+
+
+<!-- Begin Delete externalSystem Modal -->
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" [cssClass]="cssClass" #deleteModal>
+  <form #modalForm="ngForm" class="form-horizontal" role="form">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Delete externalSystem</h4>
+    </modal-header>
+    <modal-body>
+      <div class="form-group">
+
+        <div class="text-center">Do you want to delete ?</div>
+        <div class="text-center" [innerHTML]="externalSystem.externalSystem"></div>
+
+      </div>
+
+
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="submitDeleteConfirm()">Yes</button>
+      <button type="button" class="btn btn-default" (click)="deleteModal.dismiss()">Cancel</button>
+    </modal-footer>
+  </form>
+</modal>
+<!-- End Delete externalSystem Modal -->
