@@ -17,7 +17,7 @@ export class UrlTypesDetailsResolver implements Resolve<UrlType> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<UrlType> {
     let id = route.params['id'];
     //return this.ats.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/endpointtypes/" + id, {}).then(urlType => {
-    return this.ats.get("./assets/url-types/" + id + '.json', {}).then(urlType => {
+    return this.ats.get(this.appConstants.getApiEndPoint() + "/clus/endpointtypes/" + id , {}).then(urlType => {
       if (urlType) {
         return urlType;
       } else { // id not found

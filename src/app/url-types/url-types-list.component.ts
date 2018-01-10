@@ -96,12 +96,14 @@ export class UrlTypesListComponent implements OnInit {
   getUrlTypes(page, pSize, search?) {
     return new Promise((resolve, reject) => {
       this.list_busy = this.service
-        //.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/endpointtypes", { pageNumber: page, pageSize: pSize, name: search })
-        .get("./assets/url-types/url-types.json", {})
+        .get(this.appConstants.getApiEndPoint() +  "/clus/endpointtypes", { pageNumber: page, pageSize: pSize, name: search })
+        //.get("./assets/url-types/url-types.json", {})
         .then(urlTypes => {
-          this.urlTypes = urlTypes.searchResults;
+//        	this.urlTypes = urlTypes.searchResults;
+          this.urlTypes = urlTypes.data;
           this.pagedItems = this.urlTypes;
-          this.navigationProperty.navItems = _.pluck(urlTypes.searchResults, 'id');
+//          this.navigationProperty.navItems = _.pluck(urlTypes.searchResults, 'id');
+          this.navigationProperty.navItems = _.pluck(this.urlTypes, 'id');
           this.navigationProperty.currentItem = 0;
           localStorage.setItem('navProp', JSON.stringify(this.navigationProperty));
           if (urlTypes.pagingInfo && typeof urlTypes.pagingInfo == "object") {

@@ -104,7 +104,7 @@ export class UrlTypesDetailsComponent implements OnInit, OnDestroy {
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
     delete obj.id;
     delete obj.tags;
-    this.compList.busy = this.service.put(this.appConstants.apiEndPoint + "/clus/endpointtypes/" + this.urlType.id, obj)
+    this.compList.busy = this.service.put(this.appConstants.getApiEndPoint()  + "/clus/endpointtypes/" + this.urlType.id, obj)
       .then(response => {
         this.error = {};
         this.toastr.success(obj.urlType + ' is Updated!');
