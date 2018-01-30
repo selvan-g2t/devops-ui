@@ -1,0 +1,72 @@
+{
+    "apiVersion": "extensions/v1beta1",
+    "kind": "Deployment",
+    "metadata": {
+        "name": "devops-ui",
+        "namespace": "default"
+    },
+    "spec": {
+        "replicas": 1,
+        "template": {
+            "metadata": {
+                "labels": {
+                    "app": "devops-ui"
+                }
+            },
+            "spec": {
+                "restartPolicy": "Always",
+                "containers": [{
+                    "name": "devops-ui",
+                    "image": "DOCKER_IMAGE",
+                    "imagePullPolicy": "Always",
+                    "ports": [{
+                        "containerPort": 8080,
+                        "protocol": "TCP"
+                    }],
+                    "resources" : {
+                        "limits" : {
+                            "cpu" : "250m",
+                            "memory" : "256Mi"
+                        },
+                        "requests" : {
+                            "cpu" : "0",
+                            "memory" : "0"
+                        }
+                    },
+                    "volumeMounts": [{
+                        "name": "secret",
+                        "mountPath": "/usr/src/app/app/appConfig",
+                        "readOnly": true
+                    }]
+                }],
+                "volumes": [{
+                    "name": "secret",
+                    "secret": {
+                        "secretName": "devops-ui-secret"
+                    }
+                }]
+            }
+        }
+    }
+}
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "name": "devops-ui",
+        "namespace": "default",
+        "labels": {
+            "app": "devops-ui"
+        }
+    },
+    "spec": {
+        "type": "ClusterIP",
+        "clusterIP": "10.55.240.53",
+        "ports": [{
+            "port": 8080
+        }],
+        "selector": {
+            "app": "devops-ui"
+        }
+    }
+}
