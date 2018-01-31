@@ -39,6 +39,7 @@ node {
     }
     stage('build_publish_docker') {
 	dir ( '.') {
+	    imageTag =  "${imageTagRoot}:${BUILD_ID}";
 	    sh ("cp tooling/docker/* .");
 	    sh ("docker build --rm  -t ${imageTag} .");
 	    sh ("gcloud docker -- push ${imageTag}");
