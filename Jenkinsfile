@@ -40,8 +40,7 @@ node {
 	dir ( '.') {
 	    imageTag =  "${imageTagRoot}:${BUILD_ID}";
 	    sh ("cp tooling/docker/* .");
-//	    sh ("docker build --rm  -t ${imageTag} .");
-	    sh ("docker build  -t ${imageTag} .");
+	    sh ("docker build --rm  -t ${imageTag} .");
 	    sh ("gcloud docker -- push ${imageTag}");
 	    sh ('echo Finished  : `pwd`');
 
