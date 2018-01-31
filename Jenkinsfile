@@ -9,7 +9,6 @@ def deployApp = true;
 def deployClusterName =  "gbstt" ; //  Test Cluster.
 def healthUrl = "/devops-ui/healtcheck.html";  // Prints this URL after deploy 
 
-
 // ----------- SNIP -------------------
 def gceJenkinsProject = "${env.INTIGNA_JENKINS_GCEPROJECT}"; // Where the jenkins repos are pushed to.
 def gceClusterZone = "${env.INTIGNA_ZONE}"; // us-central1-f;
@@ -41,7 +40,8 @@ node {
 	dir ( '.') {
 	    imageTag =  "${imageTagRoot}:${BUILD_ID}";
 	    sh ("cp tooling/docker/* .");
-	    sh ("docker build --rm  -t ${imageTag} .");
+//	    sh ("docker build --rm  -t ${imageTag} .");
+	    sh ("docker build  -t ${imageTag} .");
 	    sh ("gcloud docker -- push ${imageTag}");
 	    sh ('echo Finished  : `pwd`');
 
@@ -66,7 +66,7 @@ node {
 	def envName = "";
 	def gceClusterName = "";
 	def deployFileRoot = "";
-	if (imageVers.indexOf('SNAPSHOT') != -1) {
+	if (isSnapshotVersion == true) {
 	    envName = "test";
 	} else {
 	    envName = "stage"; // The env name is used for canary releases
