@@ -37,31 +37,6 @@ node {
 	sh "git checkout ${branchName}";
 	
     }
-    stage('Build') {
-	withMaven(
-		  maven: 'maven-3.2.5',   
-		  mavenSettingsConfig: BUILD_MAVEN_SETTINGS
-	  ) {
-	    // Getting the version of the POM - needs to be the first version.
-	    if (vers == "") {
-		sh "grep '<version>' pom.xml | head -1 | sed 's:<version>::' | sed 's:</version>::' > vers.val";
-		vers = readFile 'vers.val';
-	    }
-	    vers = vers.trim();
-	    isSnapshotVersion = vers.indexOf('SNAPSHOT') != -1;
-	    imageVers = vers + ".${BUILD_ID}";
-	     
-	    sh "git rev-parse ${branchName} > gitCommit.val";
-	    def gitCommit = readFile 'gitCommit.val';
-	    
-	    imageTag =  "${imageTagRoot}:${imageVers}";
-	    sh "echo calculated image tag : " + imageTag + " vers: " + imageVers;
-		
-	    def mvnArgs = " -DskipLiquibase=${mvnSkipLiquibase} -DskipTests=${mvnSkipTests} -Dbuild.number=${BUILD_NUMBER} -Dbuild.id=${BUILD_ID} -DdockerImage=${imageTag} -DgitUrl=${url} -DgitBranch=${branchName} -DgitCommit=${gitCommit}"; 
-
-	    sh "mvn clean package " + mvnArgs;
-	}
-    }
     stage('build_publish_docker') {
 	dir ( '.') {
 	    sh ("cp tooling/docker/* .");
