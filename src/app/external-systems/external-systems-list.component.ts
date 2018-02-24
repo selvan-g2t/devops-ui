@@ -96,12 +96,14 @@ export class ExternalSystemsListComponent implements OnInit {
   getExternalSystems(page, pSize, search?) {
     return new Promise((resolve, reject) => {
       this.list_busy = this.service
-        //.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/endpointurls", { pageNumber: page, pageSize: pSize, name: search })
-        .get("./assets/external-systems/external-systems.json", {})
+        .get(this.appConstants.getApiEndPoint() +  "/clus/endpointurls", { pageNumber: page, pageSize: pSize, name: search })
+        //.get("./assets/external-systems/external-systems.json", {})
         .then(externalSystems => {
-          this.externalSystems = externalSystems.searchResults;
+            this.externalSystems = externalSystems.data;
+   //         this.externalSystems = externalSystems.searchResults;
+            
           this.pagedItems = this.externalSystems;
-          this.navigationProperty.navItems = _.pluck(externalSystems.searchResults, 'id');
+          this.navigationProperty.navItems = _.pluck(this.externalSystems , 'id');
           this.navigationProperty.currentItem = 0;
           localStorage.setItem('navProp', JSON.stringify(this.navigationProperty));
           if (externalSystems.pagingInfo && typeof externalSystems.pagingInfo == "object") {
@@ -169,13 +171,14 @@ export class ExternalSystemsListComponent implements OnInit {
   error: any = {};
   modalBusy: any;
   save(): void {
+	  debugger;
     let obj = Object.assign({}, this.externalSystem);
     if (obj.externalSystemTags)
       obj.externalSystemTags = obj.externalSystemTags.map(tag => {
         return { id: tag.value };
       });
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
-    this.modalBusy = this.service.post(this.appConstants.apiEndPoint + "/clus/endpointurls", obj)
+    this.modalBusy = this.service.post(this.appConstants.getApiEndPoint() +  "/clus/externalsystems", obj)
       .then(response => {
         this.error = {};
         this.modal.close();

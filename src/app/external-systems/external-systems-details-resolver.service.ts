@@ -16,8 +16,9 @@ export class ExternalSystemsDetailsResolver implements Resolve<ExternalSystem> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<ExternalSystem> {
     let id = route.params['id'];
-    //return this.ats.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/endpointurls/" + id, {}).then(externalSystem => {
-    return this.ats.get("./assets/external-systems/" + id + '.json', {}).then(externalSystem => {
+    return this.ats.get(this.appConstants.getApiEndPoint() + "/clus/externalsystems/" + id, {}).then(externalSystem => {
+//    return this.ats.get("./assets/external-systems/" + id + '.json', {}).then(externalSystem => {
+    	debugger;
       if (externalSystem) {
         return externalSystem;
       } else { // id not found

@@ -104,7 +104,7 @@ export class KubernetesInstancesDetailsComponent implements OnInit, OnDestroy {
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
     delete obj.id;
     delete obj.tags;
-    this.compList.busy = this.service.put(this.appConstants.apiEndPoint + "/clus/kubinstances/" + this.kubernetesInstance.id, obj)
+    this.compList.busy = this.service.put(this.appConstants.getApiEndPoint() +  "/clus/kubinstances/" + this.kubernetesInstance.id, obj)
       .then(response => {
         this.error = {};
         this.toastr.success(obj.kubernetesInstance + ' is Updated!');
@@ -132,7 +132,7 @@ export class KubernetesInstancesDetailsComponent implements OnInit, OnDestroy {
 
 
   submitDeleteConfirm() {
-    this.compList.busy = this.service.delete(this.appConstants.apiEndPoint + "/clus/kubinstances/" + this.kubernetesInstance.id)
+    this.compList.busy = this.service.delete(this.appConstants.getApiEndPoint() +  "/clus/kubinstances/" + this.kubernetesInstance.id)
       .then(response => {
         this.kubernetesInstanceModalDelete.close();
         this.toastr.success('Tag Deleted!');

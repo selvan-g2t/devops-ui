@@ -16,8 +16,8 @@ export class KubernetesInstancesDetailsResolver implements Resolve<KubernetesIns
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<KubernetesInstance> {
     let id = route.params['id'];
-    //return this.ats.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/kubinstances/" + id, {}).then(kubernetesInstance => {
-    return this.ats.get("./assets/kubernetes-instances/" + id + '.json', {}).then(kubernetesInstance => {
+    return this.ats.get(this.appConstants.getApiEndPoint() +  "/clus/kubinstances/" + id, {}).then(kubernetesInstance => {
+    //return this.ats.get("./assets/kubernetes-instances/" + id + '.json', {}).then(kubernetesInstance => {
       if (kubernetesInstance) {
         return kubernetesInstance;
       } else { // id not found

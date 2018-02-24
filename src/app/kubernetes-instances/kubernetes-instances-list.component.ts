@@ -96,12 +96,12 @@ export class KubernetesInstancesListComponent implements OnInit {
   getKubernetesInstances(page, pSize, search?) {
     return new Promise((resolve, reject) => {
       this.list_busy = this.service
-        //.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/kubinstances", { pageNumber: page, pageSize: pSize, name: search })
-        .get("./assets/kubernetes-instances/kubernetes-instances.json", {})
+        .get(this.appConstants.getApiEndPoint() +  "/clus/kubinstances", { pageNumber: page, pageSize: pSize, name: search })
+        //.get("./assets/kubernetes-instances/kubernetes-instances.json", {})
         .then(kubernetesInstances => {
-          this.kubernetesInstances = kubernetesInstances.searchResults;
+          this.kubernetesInstances = kubernetesInstances.data;
           this.pagedItems = this.kubernetesInstances;
-          this.navigationProperty.navItems = _.pluck(kubernetesInstances.searchResults, 'id');
+          this.navigationProperty.navItems = _.pluck(this.kubernetesInstances, 'id');
           this.navigationProperty.currentItem = 0;
           localStorage.setItem('navProp', JSON.stringify(this.navigationProperty));
           if (kubernetesInstances.pagingInfo && typeof kubernetesInstances.pagingInfo == "object") {
@@ -175,7 +175,7 @@ export class KubernetesInstancesListComponent implements OnInit {
         return { id: tag.value };
       });
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
-    this.modalBusy = this.service.post(this.appConstants.apiEndPoint + "/clus/kubinstances", obj)
+    this.modalBusy = this.service.post(this.appConstants.getApiEndPoint() + "/clus/kubinstances", obj)
       .then(response => {
         this.error = {};
         this.modal.close();

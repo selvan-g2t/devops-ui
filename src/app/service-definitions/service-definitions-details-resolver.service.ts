@@ -16,8 +16,8 @@ export class ServiceDefinitionsDetailsResolver implements Resolve<ServiceDefinit
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<ServiceDefinition> {
     let id = route.params['id'];
-    //return this.ats.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/kubinstances/" + id, {}).then(serviceDefinition => {
-    return this.ats.get("./assets/service-definitions/" + id + '.json', {}).then(serviceDefinition => {
+    return this.ats.get(this.appConstants.getApiEndPoint() + + "/clus/kubinstances/" + id, {}).then(serviceDefinition => {
+    //return this.ats.get("./assets/service-definitions/" + id + '.json', {}).then(serviceDefinition => {
       if (serviceDefinition) {
         return serviceDefinition;
       } else { // id not found

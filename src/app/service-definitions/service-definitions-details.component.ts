@@ -104,7 +104,7 @@ export class ServiceDefinitionsDetailsComponent implements OnInit, OnDestroy {
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
     delete obj.id;
     delete obj.tags;
-    this.compList.busy = this.service.put(this.appConstants.apiEndPoint + "/clus/kubinstances/" + this.serviceDefinition.id, obj)
+    this.compList.busy = this.service.put(this.appConstants.getApiEndPoint() + "/clus/kubinstances/" + this.serviceDefinition.id, obj)
       .then(response => {
         this.error = {};
         this.toastr.success(obj.serviceDefinition + ' is Updated!');
@@ -132,7 +132,7 @@ export class ServiceDefinitionsDetailsComponent implements OnInit, OnDestroy {
 
 
   submitDeleteConfirm() {
-    this.compList.busy = this.service.delete(this.appConstants.apiEndPoint + "/clus/kubinstances/" + this.serviceDefinition.id)
+    this.compList.busy = this.service.delete(this.appConstants.getApiEndPoint() + "/clus/kubinstances/" + this.serviceDefinition.id)
       .then(response => {
         this.serviceDefinitionModalDelete.close();
         this.toastr.success('Tag Deleted!');

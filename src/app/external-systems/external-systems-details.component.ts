@@ -104,7 +104,7 @@ export class ExternalSystemsDetailsComponent implements OnInit, OnDestroy {
     obj.statusName = obj.statusName ? 'Active' : 'Inactive';
     delete obj.id;
     delete obj.tags;
-    this.compList.busy = this.service.put(this.appConstants.apiEndPoint + "/clus/endpointurls/" + this.externalSystem.id, obj)
+    this.compList.busy = this.service.put(this.appConstants.getApiEndPoint() + "/clus/externalsystems/" + this.externalSystem.id, obj)
       .then(response => {
         this.error = {};
         this.toastr.success(obj.externalSystem + ' is Updated!');
@@ -132,7 +132,7 @@ export class ExternalSystemsDetailsComponent implements OnInit, OnDestroy {
 
 
   submitDeleteConfirm() {
-    this.compList.busy = this.service.delete(this.appConstants.apiEndPoint + "/clus/endpointurls/" + this.externalSystem.id)
+    this.compList.busy = this.service.delete( this.appConstants.getApiEndPoint() +  "/clus/externalsystems/" + this.externalSystem.id )
       .then(response => {
         this.externalSystemModalDelete.close();
         this.toastr.success('Tag Deleted!');

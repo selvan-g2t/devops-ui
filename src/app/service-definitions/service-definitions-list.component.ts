@@ -96,12 +96,12 @@ export class ServiceDefinitionsListComponent implements OnInit {
   getServiceDefinitions(page, pSize, search?) {
     return new Promise((resolve, reject) => {
       this.list_busy = this.service
-        //.get(this.appConstants.apiEndPoint + this.appConstants.applicaitonId + "/clus/kubinstances", { pageNumber: page, pageSize: pSize, name: search })
-        .get("./assets/service-definitions/service-definitions.json", {})
+        .get(this.appConstants.getApiEndPoint() + + "/clus/kubinstances", { pageNumber: page, pageSize: pSize, name: search })
+        //.get("./assets/service-definitions/service-definitions.json", {})
         .then(serviceDefinitions => {
-          this.serviceDefinitions = serviceDefinitions.searchResults;
+          this.serviceDefinitions = serviceDefinitions.data;
           this.pagedItems = this.serviceDefinitions;
-          this.navigationProperty.navItems = _.pluck(serviceDefinitions.searchResults, 'id');
+          this.navigationProperty.navItems = _.pluck(this.serviceDefinitions , 'id');
           this.navigationProperty.currentItem = 0;
           localStorage.setItem('navProp', JSON.stringify(this.navigationProperty));
           if (serviceDefinitions.pagingInfo && typeof serviceDefinitions.pagingInfo == "object") {
