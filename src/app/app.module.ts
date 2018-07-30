@@ -12,7 +12,7 @@ import { AppRoutingModule }     from './app-routing.module';
 import { AppComponent }         from './app.component';
 import {AppConstants}           from './api-constants.provider';
 
-import { TooltipModule }        from 'ngx-bootstrap/tooltip';
+//import { TooltipModule }        from 'ngx-bootstrap/tooltip';
 
 import { SharedService }       	from "./shared/shared.service";
 import { TagInputModule }       from 'ngx-chips';
@@ -28,7 +28,7 @@ import * as $ from 'jquery';
 @NgModule({
   imports: [
     TagInputModule,
-    TooltipModule,
+  //  TooltipModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
